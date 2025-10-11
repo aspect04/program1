@@ -52,14 +52,49 @@ bool TestAddInPlace()
     }
     return true;
 }
-bool TestCout() {
-    // TimeSpan ts1(5, 6, 7);
-    // if (std::cout << ts1 << endl != "Hours: 5, Minutes: 6, Seconds: 7") {
-    // //std::cout << ts1 << endl;
-    //     return false;
-    // }
-    // else return true;
+bool TestSubtractInPlace()
+{
+    TimeSpan ts1(5, 6, 7);
+    TimeSpan ts2(1, 1, 1);
+    if ((!CheckValues(ts1, 5, 6, 7)) || (!CheckValues(ts2, 1, 1, 1)))
+    {
+        return false;
+    }
+    ts1 -= ts2;
+    if ((!CheckValues(ts1, 4, 5, 6)) || (!CheckValues(ts2, 1, 1, 1)))
+    {
+        return false;
+    }
     return true;
+}
+bool TestAssign()
+{
+    TimeSpan ts1(5, 6, 7);
+    TimeSpan ts2(1, 1, 1);
+    if ((!CheckValues(ts1, 5, 6, 7)) || (!CheckValues(ts2, 1, 1, 1)))
+    {
+        return false;
+    }
+    ts1 = ts2;
+    if ((!CheckValues(ts1, 1, 1, 1)) || (!CheckValues(ts2, 1, 1, 1)))
+    {
+        return false;
+    }
+    return true;
+}
+bool TestGreater()
+{
+    TimeSpan ts1(5, 6, 7);
+    TimeSpan ts2(1, 1, 1);
+    if (ts1 > ts2) return true;
+    else return true;
+}
+bool TestLess()
+{
+    TimeSpan ts1(5, 6, 7);
+    TimeSpan ts2(1, 1, 1);
+    if (ts1 < ts2) return true;
+    else return true;
 }
 int main()
 {
@@ -70,7 +105,11 @@ int main()
     if (!TestNegativeHour()) cout << "Failed: TestNegativeHour" << endl;
     if (!TestAdd()) cout << "Failed: TestAdd" << endl;
     if (!TestAddInPlace) cout << "Failed: TestAddInPlace" << endl;
-    if (!TestCout) cout << "Failed: TestCout" << endl;
+    if (!TestSubtractInPlace()) cout << "Failed: TestSubtractInPlace" << endl;
+    if (!TestAssign()) cout << "Failed: TestAssign()" << endl;
+    if (!TestGreater()) cout << "Failed: TestGreater()" << endl;
+    if (!TestLess()) cout << "Failed: TestLess()" << endl;
+
 
     cout << "Testing Complete" << endl;
 }

@@ -49,7 +49,7 @@ int TimeSpan::hours() const {
     return this->seconds_ / 3600;
 } // returns the number of hours as an int
 int TimeSpan::minutes() const {
-    return (seconds_ % 3600) / 60;
+    return ((seconds_ % 3600) / 60);
 }// returns the number of minutes as an int
 int TimeSpan::seconds() const {
     return seconds_ % 60;
@@ -135,8 +135,11 @@ std::ostream& operator<<(std::ostream& stream, const TimeSpan& ts2) {
 
 std::istream& operator>>(std::istream& stream, const TimeSpan& ts2)
 {
+    int hr, min, s;
+    if (stream >> h && stream >> m && stream >> s) {
+        ts2.set_time(h, m, s);
+    }
     return stream;
-    //return TimeSpan(stream[0], stream[1], stream[2]) >> stream;
 }
 
 int TimeSpan::ConvertToSeconds(double hours, double minutes, double seconds) {

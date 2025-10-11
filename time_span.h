@@ -61,10 +61,10 @@ class TimeSpan {
     private:
         int seconds_; //60s->1min, 3600s-> 1hr
 
-        static int ConvertToSeconds(int hours, int minutes, int seconds);
+        int ConvertToSeconds(int hours, int minutes, int seconds);
         int ConvertToSeconds(double hours, double minutes, double seconds);
 
-
+        
 
 };
 
