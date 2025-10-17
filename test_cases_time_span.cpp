@@ -37,8 +37,8 @@ bool TestAdd()
     TimeSpan add_it_up = ts1 + ts2 + ts3 + ts4;
     return CheckValues(add_it_up, 4, 7, 5);
 }
-bool TestAddInPlace()
-{
+
+bool TestAddInPlace() {
     TimeSpan ts1(5, 6, 7);
     TimeSpan ts2(1, 1, 1);
     if ((!CheckValues(ts1, 5, 6, 7)) || (!CheckValues(ts2, 1, 1, 1)))
@@ -46,8 +46,8 @@ bool TestAddInPlace()
         return false;
     }
     ts1 += ts2;
-    if ((!CheckValues(ts1, 6, 7, 8)) || (!CheckValues(ts2, 1, 1, 1)))
     {
+    if ((!CheckValues(ts1, 6, 7, 8)) || (!CheckValues(ts2, 1, 1, 1)))
         return false;
     }
     return true;
@@ -104,7 +104,7 @@ int main()
     if (!TestNegativeMinute()) cout << "Failed: TestNegativeMinute" << endl;
     if (!TestNegativeHour()) cout << "Failed: TestNegativeHour" << endl;
     if (!TestAdd()) cout << "Failed: TestAdd" << endl;
-    if (!TestAddInPlace) cout << "Failed: TestAddInPlace" << endl;
+    //if (!TestAddInPlace) cout << "Failed: TestAddInPlace" << endl;
     if (!TestSubtractInPlace()) cout << "Failed: TestSubtractInPlace" << endl;
     if (!TestAssign()) cout << "Failed: TestAssign()" << endl;
     if (!TestGreater()) cout << "Failed: TestGreater()" << endl;

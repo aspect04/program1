@@ -54,7 +54,7 @@ class TimeSpan {
         TimeSpan operator=(const TimeSpan& ts2);
 
         friend std::ostream& operator<<(std::ostream& stream, const TimeSpan& ts2);
-        friend std::istream& operator>>(std::istream& stream, const TimeSpan& ts2);
+        friend std::istream& operator>>(std::istream& stream, TimeSpan& ts2);
 
 
 

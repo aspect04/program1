@@ -40,7 +40,7 @@ TimeSpan::TimeSpan(double hours, double minutes, double seconds) {
 
 }
 TimeSpan::TimeSpan(const TimeSpan& ts1) {
-    TimeSpan(ts1.GetTotalSeconds());
+    this->seconds_ = ts1.GetTotalSeconds();
 
 }
 
@@ -117,15 +117,17 @@ bool TimeSpan::operator!=(const TimeSpan& ts2) const {
 // assignment operators
 TimeSpan TimeSpan::operator+=(const TimeSpan& ts2)
 {
-    return TimeSpan(this->seconds_ + ts2.seconds_);
+    this->seconds_ += ts2.GetTotalSeconds();
+    return *this;
 }
-
 TimeSpan TimeSpan::operator-=(const TimeSpan& ts2)
 {
-    return TimeSpan(this->GetTotalSeconds() - ts2.GetTotalSeconds());
+    this->seconds_ -= ts2.GetTotalSeconds();
+    return *this;
 }
 TimeSpan TimeSpan::operator=(const TimeSpan& ts2) {
-    return TimeSpan(ts2.GetTotalSeconds());
+    this->seconds_ = ts2.GetTotalSeconds();
+    return *this;
 }
 
 
@@ -133,11 +135,11 @@ std::ostream& operator<<(std::ostream& stream, const TimeSpan& ts2) {
     return stream << "Hours: " << ts2.hours() << ", Minutes: " <<  ts2.minutes() << ", Seconds: "<< ts2.seconds() << endl;
 }
 
-std::istream& operator>>(std::istream& stream, const TimeSpan& ts2)
+std::istream& operator>>(std::istream& stream, TimeSpan& ts2)
 {
     int hr, min, s;
-    if (stream >> h && stream >> m && stream >> s) {
-        ts2.set_time(h, m, s);
+    if (stream >> hr && stream >> min && stream >> s) {
+        ts2.set_time(hr, min, s);
     }
     return stream;
 }
