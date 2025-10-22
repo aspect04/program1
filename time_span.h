@@ -47,11 +47,11 @@ class TimeSpan {
         bool operator!=(const TimeSpan& ts2) const;
 
         //assignment operators
-        TimeSpan operator+=(const TimeSpan& ts2);
-        TimeSpan operator-=(const TimeSpan& ts2);
+        TimeSpan& operator+=(const TimeSpan& ts2);
+        TimeSpan& operator-=(const TimeSpan& ts2);
 
 
-        TimeSpan operator=(const TimeSpan& ts2);
+        TimeSpan& operator=(const TimeSpan& ts2);
 
         friend std::ostream& operator<<(std::ostream& stream, const TimeSpan& ts2);
         friend std::istream& operator>>(std::istream& stream, TimeSpan& ts2);

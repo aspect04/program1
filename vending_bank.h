@@ -8,8 +8,10 @@ class VendingBank {
         VendingBank();
         VendingBank(int id);
         VendingBank(const VendingBank& vb);
+        VendingBank(double current_balance);
+        VendingBank(int quarter, int dime, int nickel, int penny);
 
-        //getters
+    //getters
         int GetPennyCount() const; //returns penny count
         int GetNickelCount() const; //returns nickel count
         int GetDimeCount() const; //gets dime count

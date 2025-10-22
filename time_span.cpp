@@ -115,17 +115,17 @@ bool TimeSpan::operator!=(const TimeSpan& ts2) const {
 }
 
 // assignment operators
-TimeSpan TimeSpan::operator+=(const TimeSpan& ts2)
+TimeSpan& TimeSpan::operator+=(const TimeSpan& ts2)
 {
     this->seconds_ += ts2.GetTotalSeconds();
     return *this;
 }
-TimeSpan TimeSpan::operator-=(const TimeSpan& ts2)
+TimeSpan& TimeSpan::operator-=(const TimeSpan& ts2)
 {
     this->seconds_ -= ts2.GetTotalSeconds();
     return *this;
 }
-TimeSpan TimeSpan::operator=(const TimeSpan& ts2) {
+TimeSpan& TimeSpan::operator=(const TimeSpan& ts2) {
     this->seconds_ = ts2.GetTotalSeconds();
     return *this;
 }
